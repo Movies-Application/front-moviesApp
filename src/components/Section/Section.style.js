@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
-  background: #${(props) => props.background};
+  background: ${(props) => props.background};
   padding: 0 2em;
 `;
 
