@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import { Header, FormTemplate, Section } from "../../components";
+import { Hero, FormTemplate, Section } from "../../components";
 import { userData } from "../../utils/data";
 import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
-import * as S from "./Login.style";
+import heroImg from "../../assets/hero-movie.jpeg";
 
 function login(data, setError, history, auth) {
   console.log(data);
@@ -34,8 +34,7 @@ function Login() {
   return (
     <>
       {error}
-      <S.Hero>
-        <Header />
+      <Hero image={heroImg} shadow>
         <Section>
           <FormTemplate
             fields={userData}
@@ -47,7 +46,7 @@ function Login() {
             }
           />
         </Section>
-      </S.Hero>
+      </Hero>
     </>
   );
 }

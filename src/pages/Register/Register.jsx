@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Header, FormTemplate, Section } from "../../components";
+import { Hero, FormTemplate, Section } from "../../components";
 import { userData } from "../../utils/data";
-import * as S from "./Register.style";
+import heroImg from "../../assets/hero-movie.jpeg";
 
 function addUser(data, setError) {
   console.log(data);
@@ -23,8 +23,7 @@ function Register() {
   return (
     <>
       {error}
-      <S.Hero>
-        <Header />
+      <Hero image={heroImg} shadow>
         <Section>
           <FormTemplate
             fields={userData}
@@ -34,7 +33,7 @@ function Register() {
             callback={(fieldValues) => addUser(fieldValues, setError)}
           />
         </Section>
-      </S.Hero>
+      </Hero>
     </>
   );
 }

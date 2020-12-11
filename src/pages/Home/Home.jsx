@@ -1,14 +1,14 @@
 import React from "react";
-import { Header, Circle, Section, StyledSection } from "../../components/";
+import { Hero, Circle, Section, StyledSection } from "../../components/";
 import * as S from "./Home.style";
 import addIcon from "../../assets/plus.svg";
 import searchIcon from "../../assets/search-icon.svg";
 import myCollection from "../../assets/video-camera.svg";
+import heroImg from "../../assets/red-seats.jpeg";
 
 function Home() {
   return (
-    <S.Hero>
-      <Header />
+    <Hero image={heroImg}>
       <Section>
         <StyledSection
           pageTitle="make yourself comfortable"
@@ -21,7 +21,7 @@ function Home() {
           </S.FlexWrapper>
         </StyledSection>
       </Section>
-    </S.Hero>
+    </Hero>
   );
 }
 
