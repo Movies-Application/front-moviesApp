@@ -26,3 +26,14 @@ export const StyledLink = styled(Link)`
     margin-right: 30px;
   }
 `;
+
+export const Logout = styled.button`
+  padding: 0;
+  background: none;
+  border: none;
+  text-decoration: none;
+  transition: 0.8s ease-in-out;
+  color: ${(props) => props.theme.color.white};
+  cursor: pointer;
+  outline: none;
+`;
