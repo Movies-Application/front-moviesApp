@@ -1,21 +1,34 @@
-import React, { Suspense, lazy } from "react";
+import React, { useContext, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AuthContext } from "./context/AuthContext";
 
-import { Loading } from "./components";
+import { Header, Loading, PrivateRoute } from "./components";
 
 const HomeLazy = lazy(() => import("./pages/Home/Home"));
-const AboutLazy = lazy(() => import("./pages/About/About"));
+const SearchLazy = lazy(() => import("./pages/Search/Search"));
 const LoginLazy = lazy(() => import("./pages/Login/Login"));
 const RegisterLazy = lazy(() => import("./pages/Register/Register"));
 
 function Routes() {
+  const auth = useContext(AuthContext);
   return (
     <Router>
-      {/* <Header /> */}
+      <Header
+        loggedIn={auth.token}
+        logOut={() => {
+          auth.updateToken("");
+          localStorage.removeItem("token");
+        }}
+      />
       <Suspense fallback={<Loading />}>
         <Switch>
-          <Route exact path="/" component={HomeLazy}></Route>
-          <Route exact path="/about" component={AboutLazy}></Route>
+          <PrivateRoute exact path="/" component={HomeLazy}></PrivateRoute>
+          <PrivateRoute
+            exact
+            path="/search"
+            component={SearchLazy}
+          ></PrivateRoute>
+
           <Route exact path="/login" component={LoginLazy}></Route>
           <Route exact path="/register" component={RegisterLazy}></Route>
         </Switch>
