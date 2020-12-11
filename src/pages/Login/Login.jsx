@@ -1,12 +1,11 @@
 import React, { useState, useContext } from "react";
-import { Hero, FormTemplate, Section } from "../../components";
+import { Hero, FormTemplate, Notification, Section } from "../../components";
 import { userData } from "../../utils/data";
 import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import heroImg from "../../assets/hero-movie.jpeg";
 
-function login(data, setError, history, auth) {
-  console.log(data);
+function login(data, setError, auth, history) {
   fetch("http://localhost:8080/login", {
     method: "POST",
     headers: {
@@ -16,14 +15,14 @@ function login(data, setError, history, auth) {
   })
     .then((res) => res.json())
     .then((data) => {
-      if (data.token) {
-        auth.updateToken(data.token);
-        history.push("/");
-      } else {
-        return setError(data.msg || "Error");
-      }
+      return (
+        setError(data.msg) ||
+        (auth.updateToken(data.token) && history.push("/"))
+      );
     })
-    .catch((error) => setError(error.message));
+    .catch(() =>
+      setError("oops.. something went wrong! please try again later.")
+    );
 }
 
 function Login() {
@@ -33,16 +32,16 @@ function Login() {
 
   return (
     <>
-      {error}
       <Hero image={heroImg} shadow>
         <Section>
+          {error && <Notification>{error}</Notification>}
           <FormTemplate
             fields={userData}
             type="submit"
             mainBtn="login"
             secBtn="don't have an account"
             callback={(fieldValues) =>
-              login(fieldValues, setError, history, auth)
+              login(fieldValues, setError, auth, history)
             }
           />
         </Section>

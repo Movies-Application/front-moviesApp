@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Hero, FormTemplate, Section } from "../../components";
+import { Hero, FormTemplate, Notification, Section } from "../../components";
 import { userData } from "../../utils/data";
 import heroImg from "../../assets/hero-movie.jpeg";
 
@@ -14,7 +14,9 @@ function addUser(data, setError) {
   })
     .then((res) => res.json())
     .then((res) => setError(res.msg))
-    .catch((error) => setError(error.message));
+    .catch(() =>
+      setError("oops.. something went wrong! please try again later.")
+    );
 }
 
 function Register() {
@@ -22,9 +24,9 @@ function Register() {
 
   return (
     <>
-      {error}
       <Hero image={heroImg} shadow>
         <Section>
+          {error && <Notification>{error}</Notification>}
           <FormTemplate
             fields={userData}
             type="submit"
