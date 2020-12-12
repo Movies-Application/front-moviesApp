@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./SelectOption.style";
 
-function SelectOption({ handleChange, title, movie_id, year }) {
+function SelectOption({ handleChange, title, movie_id, year, onClick, type }) {
+  const [display, setDisplay] = useState(false);
+
   return (
-    <S.OptionWrapper>
-      <label htmlFor={movie_id}>
-        <S.Option
-          type="radio"
-          name="movie"
-          id={movie_id}
-          value={movie_id}
-          onChange={handleChange}
-        />
-        {title} ({year})
-      </label>
-    </S.OptionWrapper>
+    <S.SelectOption
+      onClick={() => setDisplay(true)}
+      onMouseLeave={() => setDisplay(false)}
+    >
+      <S.OptionWrapper>
+        <S.Label htmlFor={movie_id}>
+          <S.Option
+            type="radio"
+            name="movie"
+            id={movie_id}
+            value={movie_id}
+            onChange={handleChange}
+          />
+          {title}, {year}
+        </S.Label>
+      </S.OptionWrapper>
+      <S.AboutButton
+        onSubmit={onClick}
+        type="submit"
+        displayButton={display}
+        btnType={type}
+      />
+    </S.SelectOption>
   );
 }
 
