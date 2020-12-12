@@ -6,6 +6,7 @@ import AuthProvider from "./context/AuthContext";
 import "normalize.css";
 import "./index.css";
 import theme from "./theme";
+require("dotenv").config();
 
 ReactDOM.render(
   <React.StrictMode>
