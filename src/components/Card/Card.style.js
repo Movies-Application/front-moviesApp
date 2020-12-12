@@ -4,18 +4,19 @@ import imdbLogo from "../../assets/imdb.svg";
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 200px;
-  min-height: 330px;
+  min-width: 200px;
+  min-height: 370px;
   background: ${(props) => props.theme.color.black};
   box-shadow: 0px 0px 7px 2px rgba(251, 251, 251, 0.2);
 `;
 
 export const Poster = styled.div`
   width: 100%;
-  height: 80%;
-  background: url("https://images.unsplash.com/photo-1559583109-3e7968136c99?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8bW92aWUlMjBwb3N0ZXJ8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60");
+  /* height: 300px; */
+  flex: 1;
+  background: url(${(props) => props.poster});
   background-size: cover;
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
 `;
 
