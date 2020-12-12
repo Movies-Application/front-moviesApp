@@ -1,4 +1,5 @@
 export { default as Button } from "./Button/Button";
+export { default as Card } from "./Card/Card";
 export { default as Circle } from "./Circle/Circle";
 export { default as FormTemplate } from "./FormTemplate/FormTemplate";
 export { default as Header } from "./Header/Header";
@@ -8,4 +9,5 @@ export { default as Loading } from "./Loading/Loading";
 export { default as Notification } from "./Notification/Notification";
 export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
 export { default as Section } from "./Section/Section";
+export { default as Select } from "./Select/Select";
 export { default as StyledSection } from "./StyledSection/StyledSection";
