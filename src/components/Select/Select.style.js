@@ -9,9 +9,9 @@ export const DropDownHeader = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  margin-bottom: 20px;
-  color: ${(props) => props.theme.color.white};
+  color: rgb(251, 251, 251, 0.3);
   background: ${(props) => props.theme.color.black};
+  cursor: pointer;
 `;
 
 export const Toggle = styled.button`

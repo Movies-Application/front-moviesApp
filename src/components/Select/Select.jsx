@@ -7,8 +7,8 @@ function Select({ children, selected }) {
 
   return (
     <S.DropDownContainer>
-      <S.DropDownHeader onClick={toggling}>
-        {selected || "Choose!"}
+      <S.DropDownHeader onClick={toggling} type="radio">
+        {"Your search results are ready!"}
         <S.Toggle />
       </S.DropDownHeader>
       {isOpen && <S.DropDownListContainer>{children}</S.DropDownListContainer>}
