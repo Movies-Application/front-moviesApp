@@ -1,36 +1,17 @@
 import React, { useState } from "react";
 import * as S from "./Select.style";
 
-function Select() {
+function Select({ children, selected }) {
   const [isOpen, setOpen] = useState(false);
   const toggling = () => setOpen(!isOpen);
-  const [option, setOption] = useState("");
 
   return (
     <S.DropDownContainer>
       <S.DropDownHeader onClick={toggling}>
-        {option || "Choose!"}
+        {selected || "Choose!"}
+        <S.Toggle />
       </S.DropDownHeader>
-      {isOpen && (
-        <S.DropDownListContainer>
-          <S.W>
-            <label htmlFor="1">
-              <S.ListItem
-                type="radio"
-                name="movie"
-                id="1"
-                value="mangoes"
-                onChange={(e) => {
-                  setOption(e.target.value);
-                  setOpen(!isOpen);
-                  console.log(e.target.value);
-                }}
-              />
-              Mangoes
-            </label>
-          </S.W>
-        </S.DropDownListContainer>
-      )}
+      {isOpen && <S.DropDownListContainer>{children}</S.DropDownListContainer>}
     </S.DropDownContainer>
   );
 }
