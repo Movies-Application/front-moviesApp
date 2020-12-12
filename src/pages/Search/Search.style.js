@@ -1,23 +1,29 @@
 import styled from "styled-components";
-import heroImg from "../../assets/blury-lights2.jpeg";
-import { Hero } from "../../components";
+import searchIcon from "../../assets/search-icon.svg";
 
-// export const Hero = styled.div`
-//   height: 100vh;
-//   background-image: url(${heroImg});
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   background-position: center;
-//   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
-// `;
+export const SearchBar = styled.div``;
 
-export const FlexWrapper = styled.div`
-  max-width: 40%;
+export const SearchWrapper = styled.form`
+  display: flex;
+  width: 100%;
+`;
+
+export const SearchButton = styled.button`
+  width: 10%;
+  background: url(${searchIcon});
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-bottom: 1px solid rgb(251, 251, 251);
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background-size: 27px;
+  }
+`;
+
+export const ListWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 20px;
-`;
-export const StyledHero = styled(Hero)`
-  background-image: url(${heroImg});
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
 `;
