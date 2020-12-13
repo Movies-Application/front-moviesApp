@@ -26,21 +26,20 @@ export const Toggle = styled.button`
 
 export const DropDownListContainer = styled.div`
   width: 100%;
-  max-height: 300px;
+  max-height: 194px;
+  overflow: scroll;
+  color: rgb(251, 251, 251, 0.5);
   overflow: auto;
   &&::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: ${(props) => props.theme.color.black};
   }
 
   &&::-webkit-scrollbar {
-    width: 10px;
-    background-color: ${(props) => props.theme.color.black};
+    width: 1px;
   }
 
   &&::-webkit-scrollbar-thumb {
-    background-color: ${(props) => props.theme.color.black};
-    border: 1px solid rgb(251, 251, 251, 0.3);
+    border: 1px solid rgb(251, 251, 251, 0.1);
   }
 `;
 

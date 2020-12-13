@@ -18,14 +18,14 @@ function SelectOption({ handleChange, title, movie_id, year, onClick, type }) {
             value={movie_id}
             onChange={handleChange}
           />
-          {title}, {year}
+          {title} {year}
         </S.Label>
       </S.OptionWrapper>
       <S.AboutButton
-        onSubmit={onClick}
         type="submit"
         displayButton={display}
         btnType={type}
+        onSubmit={onClick}
       />
     </S.SelectOption>
   );
