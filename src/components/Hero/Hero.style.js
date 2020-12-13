@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Hero = styled.div`
-  height: 100vh;
+  height: ${(props) => (props.size === "small" ? "80vh" : "100vh")};
   margin-top: -182px;
   padding-top: 182px;
   background: ${(props) => props.image && `url(${props.image})`};
