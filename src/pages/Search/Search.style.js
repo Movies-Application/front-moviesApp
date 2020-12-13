@@ -32,3 +32,7 @@ export const MovieWrapper = styled.div`
 export const PaddingLeftWrapper = styled.div`
   padding-left: 20px;
 `;
+
+export const SecondaryTitle = styled.h2`
+  font-size: 1.7em;
+`;
