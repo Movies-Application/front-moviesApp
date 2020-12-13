@@ -8,6 +8,7 @@ export { default as InputField } from "./InputField/InputField";
 export { default as Loading } from "./Loading/Loading";
 export { default as Notification } from "./Notification/Notification";
 export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
+export { default as MovieSection } from "./MovieSection/MovieSection";
 export { default as Section } from "./Section/Section";
 export { default as Select } from "./Select/Select";
 export { default as SelectOption } from "./SelectOption/SelectOption";
