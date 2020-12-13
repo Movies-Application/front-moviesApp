@@ -3,6 +3,7 @@ import {
   Card,
   Hero,
   InputField,
+  MovieSection,
   Section,
   Select,
   SelectOption,
@@ -77,10 +78,27 @@ function Search() {
       <Section>
         <StyledSection
           pageTitle="How many movies have You seen?"
-          description="It has been estimated that there are approximately 500 000 movies global."
+          description="It has been estimated that there are approximately 500 000 movies worldwide. How many left for you to watch? Let's explore!"
         ></StyledSection>
       </Section>
       <Section>
+        {movieDetails && (
+          <S.MovieWrapper>
+            <Card
+              poster={poster}
+              title={movieDetails.title}
+              rating={Number(movieDetails.imdb_rating).toFixed(1)}
+            />
+            <S.PaddingLeftWrapper>
+              <MovieSection
+                description={movieDetails.description}
+                runtime={movieDetails.runtime}
+                year={movieDetails.year}
+                genres={movieDetails.genres.join(", ")}
+              />
+            </S.PaddingLeftWrapper>
+          </S.MovieWrapper>
+        )}
         <S.SearchBar>
           <S.SearchWrapper
             onSubmit={(e) => {
@@ -125,29 +143,6 @@ function Search() {
             </Select>
           )}
         </form>
-      </Section>
-      <Section>
-        <S.MovieWrapper>
-          <Card
-            poster={poster}
-            title={movieDetails.title}
-            rating={Number(movieDetails.imdb_rating).toFixed(1)}
-          />
-          <S.MovieDetailsWrapper>
-            <S.SecondaryHeading>ABOUT</S.SecondaryHeading>
-
-            <S.MovieDescription>{movieDetails.description}</S.MovieDescription>
-            <h4>
-              Duration: <span>{movieDetails.runtime} min.</span>
-            </h4>
-            <h4>
-              Release year: <span>{movieDetails.year}</span>
-            </h4>
-            <h4>
-              Genres: <span>{movieDetails.genres}</span>
-            </h4>
-          </S.MovieDetailsWrapper>
-        </S.MovieWrapper>
       </Section>
     </Hero>
   );

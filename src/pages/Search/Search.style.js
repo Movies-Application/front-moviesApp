@@ -25,19 +25,10 @@ export const SearchButton = styled.button`
 
 export const MovieWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   width: 100%;
 `;
 
-export const MovieDetailsWrapper = styled.div`
-  margin-left: 20px;
-  color: rgba(251, 251, 251, 0.5);
-`;
-
-export const SecondaryHeading = styled.h2`
-  color: rgba(251, 251, 251);
-`;
-
-export const MovieDescription = styled.div`
-  margin-left: 20px;
-  color: rgba(251, 251, 251, 0.5);
+export const PaddingLeftWrapper = styled.div`
+  padding-left: 20px;
 `;
