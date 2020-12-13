@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./MovieSection.style";
 
-function MovieSection({ description, runtime, year, genres }) {
+function MovieSection({ description, runtime, year, genres, rating, votes }) {
   return (
     <S.MovieSection>
       <S.DescriptionBlock>
@@ -21,6 +21,14 @@ function MovieSection({ description, runtime, year, genres }) {
           GENRES: <S.CustomText>{genres}</S.CustomText>
         </S.DetailsHeader>
       </S.DetailsBlock>
+      <S.DetailsBlock2>
+        <S.DetailsHeader>
+          IMDB RATING: <S.CustomText>{rating} / 10</S.CustomText>
+        </S.DetailsHeader>
+        <S.DetailsHeader>
+          VOTES: <S.CustomText>{votes}</S.CustomText>
+        </S.DetailsHeader>
+      </S.DetailsBlock2>
     </S.MovieSection>
   );
 }

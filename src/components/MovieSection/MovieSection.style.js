@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const MovieSection = styled.article`
-  margin-right: 166px;
+  margin-right: 140px;
   width: 45%;
 `;
 
 export const DescriptionBlock = styled.div`
-  width: 350px;
+  width: 400px;
+  max-height: 230px; //
   position: relative;
   padding: 20px;
   box-sizing: border-box;
@@ -20,21 +21,23 @@ export const DescriptionBlock = styled.div`
     top: 0;
     left: 0;
     width: 30%;
-    height: 100%;
+    height: 80%;
     border-top: 1px solid ${(props) => props.theme.color.white};
     border-left: 1px solid ${(props) => props.theme.color.white};
   }
   &::after {
     right: 0;
     bottom: 0;
-    width: 25%;
+    width: 45%;
     height: 50%;
     border-right: 1px solid ${(props) => props.theme.color.white};
     border-bottom: 1px solid ${(props) => props.theme.color.white};
   }
 `;
 
-export const DescriptionWrapper = styled.div``;
+export const DescriptionWrapper = styled.div`
+  max-height: 230px;
+`;
 
 export const DescriptionHeader = styled.h2`
   margin-top: 0;
@@ -43,7 +46,8 @@ export const DescriptionHeader = styled.h2`
 
 export const Description = styled.p`
   margin: 0;
-  height: 225px;
+  padding-bottom: 1px;
+  height: 100%;
   overflow: scroll;
   color: rgb(251, 251, 251, 0.5);
   overflow: auto;
@@ -52,7 +56,13 @@ export const Description = styled.p`
   }
 
   &&::-webkit-scrollbar {
+    /* display: none; */
     width: 1px;
+    height: 5px;
+    /* &:hover {
+      display: block;
+      width: 1px;
+    } */
   }
 
   &&::-webkit-scrollbar-thumb {
@@ -61,10 +71,10 @@ export const Description = styled.p`
 `;
 
 export const DetailsBlock = styled.div`
-  max-width: 180px;
+  width: 180px;
   position: relative;
   padding: 20px;
-  transform: translate(335px, -30px);
+  transform: translate(310px, -15px);
   box-sizing: border-box;
 
   &::before,
@@ -76,7 +86,7 @@ export const DetailsBlock = styled.div`
   &::before {
     top: 0;
     left: 0;
-    width: 30%;
+    width: 65%;
     height: 100%;
     border-top: 1px solid ${(props) => props.theme.color.white};
     border-left: 1px solid ${(props) => props.theme.color.white};
@@ -88,6 +98,37 @@ export const DetailsBlock = styled.div`
     height: 50%;
     border-right: 1px solid ${(props) => props.theme.color.white};
     border-bottom: 1px solid ${(props) => props.theme.color.white};
+  }
+`;
+
+export const DetailsBlock2 = styled.div`
+  width: 180px;
+  position: relative;
+  padding: 20px;
+  transform: translate(140px, -100px);
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    color: ${(props) => props.theme.color.white};
+  }
+  &::before {
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    height: 75%;
+    border-left: 1px solid ${(props) => props.theme.color.white};
+    border-bottom: 1px solid ${(props) => props.theme.color.white};
+  }
+  &::after {
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 65%;
+    border-top: 1px solid ${(props) => props.theme.color.white};
+    border-right: 1px solid ${(props) => props.theme.color.white};
   }
 `;
 
