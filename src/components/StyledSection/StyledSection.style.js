@@ -31,17 +31,14 @@ export const StyledSection = styled.div`
 `;
 
 export const Heading = styled.h1`
-  max-width: 50%;
+  max-width: 70%;
   margin: 0;
   color: white;
   text-transform: uppercase;
-  font-size: 3em;
+  font-size: 2.5em;
 `;
 
 export const Description = styled.p`
-  color: white;
+  width: 80%;
+  color: rgb(251, 251, 251, 0.6);
 `;
-
-// export const Margin = styled.div`
-//   margin-right: 20px;
-// `;
