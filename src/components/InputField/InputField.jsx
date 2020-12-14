@@ -8,6 +8,7 @@ function InputField({
   type,
   name,
   label,
+  custom,
 }) {
   const [display, setDisplay] = useState(false);
 
@@ -19,6 +20,7 @@ function InputField({
       <S.Input
         type={type}
         id={name}
+        custom={custom}
         placeholder={placeholder}
         displayItem={display}
         onFocus={() => setDisplay(true)}
