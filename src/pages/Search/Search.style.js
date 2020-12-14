@@ -3,7 +3,11 @@ import searchIcon from "../../assets/search-icon.svg";
 
 export const SearchBar = styled.div``;
 
-export const SearchWrapper = styled.form`
+export const SearchSectionBorder = styled.div`
+  border: 1px solid rgb(251, 251, 251, 0.5);
+`;
+
+export const SearchWrapper = styled.div`
   display: flex;
   width: 100%;
 `;
@@ -15,7 +19,6 @@ export const SearchButton = styled.button`
   background-repeat: no-repeat;
   background-position: center;
   border: none;
-  border-bottom: 1px solid rgb(251, 251, 251);
   cursor: pointer;
   outline: none;
   &:hover {
@@ -34,5 +37,5 @@ export const PaddingLeftWrapper = styled.div`
 `;
 
 export const SecondaryTitle = styled.h2`
-  font-size: 1.7em;
+  font-size: 2em;
 `;
