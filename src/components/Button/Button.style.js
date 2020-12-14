@@ -10,7 +10,6 @@ export const Button = styled.button`
   border: none;
   outline: none;
   padding: 10px 20px;
-  margin: 10px 0;
   border-radius: 3px;
   cursor: pointer;
   transition: 0.1s ease-in-out;
