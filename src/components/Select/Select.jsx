@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./Select.style";
 
-function Select({ children, selected }) {
+function Select({ children }) {
   const [isOpen, setOpen] = useState(true);
   const toggling = () => setOpen(!isOpen);
 
