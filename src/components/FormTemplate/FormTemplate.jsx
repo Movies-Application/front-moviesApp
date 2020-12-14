@@ -7,6 +7,7 @@ function FormTemplate({ fields, callback, mainBtn, secBtn, type }) {
     username: "",
     password: "",
   });
+  const [select, setSelect] = useState(false);
 
   return (
     <S.FormTemplate
@@ -17,24 +18,36 @@ function FormTemplate({ fields, callback, mainBtn, secBtn, type }) {
     >
       {fields &&
         fields.map((field) => (
-          <InputField
-            key={field.name}
-            type={field.type}
-            name={field.name}
-            labelText={field.labelText}
-            placeholder={field.placeholder}
-            handleChange={(e) =>
-              setFieldValues({
-                ...fieldValues,
-                [field.name]: e.target.value,
-              })
-            }
-          />
+          <S.InputWrapper key={field.name}>
+            <InputField
+              type={field.type}
+              name={field.name}
+              labelText={field.labelText}
+              placeholder={field.placeholder}
+              handleChange={(e) =>
+                setFieldValues({
+                  ...fieldValues,
+                  [field.name]: e.target.value,
+                })
+              }
+            />
+          </S.InputWrapper>
         ))}
+      <div>
+        <S.CheckboxLabel htmlFor="showPass">
+          <S.Checkmark displayTick={select}></S.Checkmark>
+          <S.Checkbox
+            type="checkbox"
+            id="showPass"
+            name="showPass"
+            value="showPass"
+            onChange={() => setSelect(!select)}
+          />
+          Show password
+        </S.CheckboxLabel>
+      </div>
+
       <S.RightWrapper>
-        {/* <Button type={type} color="secondary">
-          {secBtn}
-        </Button> */}
         <Button type={type} color="primary">
           {mainBtn}
         </Button>
