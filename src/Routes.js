@@ -18,6 +18,7 @@ function Routes() {
         logOut={() => {
           auth.updateToken("");
           localStorage.removeItem("token");
+          localStorage.removeItem("trending_movie_id");
         }}
       />
       <Suspense fallback={<Loading />}>
