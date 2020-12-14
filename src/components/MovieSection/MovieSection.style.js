@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
 export const MovieSection = styled.article`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 390px;
   margin-right: 140px;
-  width: 45%;
 `;
 
 export const DescriptionBlock = styled.div`
-  width: 400px;
-  max-height: 230px; //
+  width: 420px;
+  max-height: 250px; //
   position: relative;
   padding: 20px;
   box-sizing: border-box;
@@ -36,7 +39,7 @@ export const DescriptionBlock = styled.div`
 `;
 
 export const DescriptionWrapper = styled.div`
-  max-height: 230px;
+  max-height: 90%;
 `;
 
 export const DescriptionHeader = styled.h2`
@@ -45,9 +48,9 @@ export const DescriptionHeader = styled.h2`
 `;
 
 export const Description = styled.p`
+  max-height: 160px;
   margin: 0;
   padding-bottom: 1px;
-  height: 100%;
   overflow: scroll;
   color: rgb(251, 251, 251, 0.5);
   overflow: auto;
@@ -56,13 +59,8 @@ export const Description = styled.p`
   }
 
   &&::-webkit-scrollbar {
-    /* display: none; */
-    width: 1px;
-    height: 5px;
-    /* &:hover {
-      display: block;
-      width: 1px;
-    } */
+    /* width: 1px; */
+    display: none;
   }
 
   &&::-webkit-scrollbar-thumb {
@@ -86,8 +84,8 @@ export const DetailsBlock = styled.div`
   &::before {
     top: 0;
     left: 0;
-    width: 65%;
-    height: 100%;
+    width: 70%;
+    height: 85%;
     border-top: 1px solid ${(props) => props.theme.color.white};
     border-left: 1px solid ${(props) => props.theme.color.white};
   }
@@ -105,7 +103,7 @@ export const DetailsBlock2 = styled.div`
   width: 180px;
   position: relative;
   padding: 20px;
-  transform: translate(140px, -100px);
+  transform: translate(140px, -85px);
   box-sizing: border-box;
 
   &::before,
@@ -146,4 +144,18 @@ export const DetailsHeader = styled.h5`
 
 export const CustomText = styled.span`
   color: rgb(251, 251, 251, 0.5);
+`;
+
+export const ButtonBlock = styled.div`
+  width: 100%;
+  max-height: 10%;
+  display: flex;
+  justify-content: flex-end;
+  transform: translate(70px, -65px);
+`;
+
+export const ButtonSubmit = styled.form`
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
 `;
