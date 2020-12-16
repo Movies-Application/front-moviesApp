@@ -4,14 +4,13 @@ import imdbLogo from "../../assets/imdb.svg";
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 220px;
-  height: 390px;
+  min-width: ${(props) => (props.infoNone === "true" ? "220px" : "230px")};
+  height: ${(props) => (props.infoNone === "true" ? "350px" : "400px")};
   background: ${(props) => props.theme.color.black};
   box-shadow: 0px 0px 7px 2px rgba(251, 251, 251, 0.2);
 `;
 
 export const Poster = styled.div`
-  width: 100%;
   flex: 1;
   background: url(${(props) => props.poster});
   background-size: cover;
@@ -20,7 +19,9 @@ export const Poster = styled.div`
 `;
 
 export const MovieInfo = styled.div`
+  display: ${(props) => (props.infoNone ? "none" : "block")};
   padding: 10px;
+  border-top: 1px solid rgba(251, 251, 251, 0.4);
 `;
 
 export const MovieTitle = styled.h5`
