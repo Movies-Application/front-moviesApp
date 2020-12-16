@@ -15,10 +15,12 @@ function login(data, setError, auth, history) {
   })
     .then((res) => res.json())
     .then((data) => {
-      return (
-        setError(data.msg) ||
-        (auth.updateToken(data.token) && history.push("/"))
-      );
+      if (data.token) {
+        // eslint-disable-next-line
+        return auth.updateToken(data.token), history.push("/");
+      } else {
+        setError(data.msg);
+      }
     })
     .catch(() =>
       setError("oops.. something went wrong! please try again later.")
