@@ -6,6 +6,7 @@ import { Header, Loading, PrivateRoute } from "./components";
 
 const HomeLazy = lazy(() => import("./pages/Home/Home"));
 const SearchLazy = lazy(() => import("./pages/Search/Search"));
+const CollectionLazy = lazy(() => import("./pages/Collection/Collection"));
 const LoginLazy = lazy(() => import("./pages/Login/Login"));
 const RegisterLazy = lazy(() => import("./pages/Register/Register"));
 
@@ -28,6 +29,11 @@ function Routes() {
             exact
             path="/search"
             component={SearchLazy}
+          ></PrivateRoute>
+          <PrivateRoute
+            exact
+            path="/collection"
+            component={CollectionLazy}
           ></PrivateRoute>
 
           <Route exact path="/login" component={LoginLazy}></Route>
