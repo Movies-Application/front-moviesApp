@@ -7,6 +7,14 @@ import { Header, Loading, PrivateRoute } from "./components";
 const HomeLazy = lazy(() => import("./pages/Home/Home"));
 const SearchLazy = lazy(() => import("./pages/Search/Search"));
 const CollectionLazy = lazy(() => import("./pages/Collection/Collection"));
+const WatchlistLazy = lazy(() => import("./pages/Watchlist/Watchlist"));
+const AboutCollectionLazy = lazy(() =>
+  import("./pages/AboutCollection/AboutCollection")
+);
+const AboutWatchlistLazy = lazy(() =>
+  import("./pages/AboutWatchlist/AboutWatchlist")
+);
+
 const LoginLazy = lazy(() => import("./pages/Login/Login"));
 const RegisterLazy = lazy(() => import("./pages/Register/Register"));
 
@@ -24,20 +32,23 @@ function Routes() {
       />
       <Suspense fallback={<Loading />}>
         <Switch>
-          <PrivateRoute exact path="/" component={HomeLazy}></PrivateRoute>
+          <PrivateRoute exact path="/" component={HomeLazy} />
+          <PrivateRoute exact path="/search" component={SearchLazy} />
+          <PrivateRoute exact path="/collection" component={CollectionLazy} />
+          <PrivateRoute exact path="/watchlist" component={WatchlistLazy} />
           <PrivateRoute
             exact
-            path="/search"
-            component={SearchLazy}
-          ></PrivateRoute>
+            path="/collection/about/:title"
+            component={AboutCollectionLazy}
+          />
           <PrivateRoute
             exact
-            path="/collection"
-            component={CollectionLazy}
-          ></PrivateRoute>
+            path="/watchlist/about/:title"
+            component={AboutWatchlistLazy}
+          />
 
-          <Route exact path="/login" component={LoginLazy}></Route>
-          <Route exact path="/register" component={RegisterLazy}></Route>
+          <Route exact path="/login" component={LoginLazy} />
+          <Route exact path="/register" component={RegisterLazy} />
         </Switch>
       </Suspense>
     </Router>
