@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Hero, Circle, Section, StyledSection } from "../../components/";
 import * as S from "./Home.style";
-import addIcon from "../../assets/plus.svg";
+import toDo from "../../assets/sands-of-time.svg";
 import searchIcon from "../../assets/search-icon.svg";
 import myCollection from "../../assets/video-camera.svg";
 import heroImg from "../../assets/red-seats.jpeg";
@@ -12,9 +12,8 @@ function Home() {
       "https://movies-tvshows-data-imdb.p.rapidapi.com/?page=1&type=get-trending-movies",
       {
         headers: {
-          "x-rapidapi-key":
-            "dfcceae8f9msh391de961f277cd7p148597jsn0fe6d28eae90",
-          "x-rapidapi-host": "movies-tvshows-data-imdb.p.rapidapi.com",
+          "x-rapidapi-key": `${process.env.REACT_APP_X_RAPIDAPI_KEY}`,
+          "x-rapidapi-host": `${process.env.REACT_APP_X_RAPIDAPI_HOST}`,
         },
       }
     )
@@ -35,12 +34,18 @@ function Home() {
       <Section>
         <StyledSection
           pageTitle="make yourself comfortable"
-          description="Choose an action and get started!"
+          description="And get started!"
         >
           <S.FlexWrapper>
-            <Circle route="/add" image={addIcon} />
-            <Circle route="/search" image={searchIcon} />
-            <Circle route="" image={myCollection} />
+            <S.MarginWrapper>
+              <Circle route="/collection" image={myCollection} />
+            </S.MarginWrapper>
+            <S.MarginWrapper>
+              <Circle route="/watchlist" image={toDo} />
+            </S.MarginWrapper>
+            <S.MarginWrapper>
+              <Circle route="/search" image={searchIcon} />
+            </S.MarginWrapper>
           </S.FlexWrapper>
         </StyledSection>
       </Section>
