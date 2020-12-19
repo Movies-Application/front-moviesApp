@@ -30,12 +30,40 @@ export const MovieWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 40px;
+
+  @media (max-width: 780px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const PaddingLeftWrapper = styled.div`
   padding-left: 20px;
+  @media (max-width: 780px) {
+    padding-top: 20px;
+    padding-left: 0;
+  }
 `;
 
 export const SecondaryTitle = styled.h2`
   font-size: 2em;
+`;
+
+export const TopMarginWrapper = styled.div`
+  margin-top: 20px;
+`;
+
+export const ButtonBlock = styled.div`
+  width: auto;
+  max-height: 10%;
+  display: flex;
+  justify-content: flex-start;
+  bottom: 0;
+`;
+
+export const ButtonSubmit = styled.form`
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
 `;

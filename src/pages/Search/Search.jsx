@@ -1,26 +1,27 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
-  Card,
   Hero,
   InputField,
   MovieSection,
+  Notification,
+  Poster,
   Section,
   Select,
   SelectOption,
   StyledSection,
 } from "../../components/";
+import { AuthContext } from "../../context/AuthContext";
 import * as S from "./Search.style";
 import heroImg from "../../assets/blury-lights2.jpeg";
-import { AuthContext } from "../../context/AuthContext";
 
-//Search by input value seting movies data results
+// Search by input value and set movies data results
 function searchByTitle(title, setMovieData) {
   fetch(
     `https://movies-tvshows-data-imdb.p.rapidapi.com/?title=${title}&type=get-movies-by-title`,
     {
       headers: {
-        "x-rapidapi-key": `dfcceae8f9msh391de961f277cd7p148597jsn0fe6d28eae90`,
-        "x-rapidapi-host": `movies-tvshows-data-imdb.p.rapidapi.com`,
+        "x-rapidapi-key": `${process.env.REACT_APP_X_RAPIDAPI_KEY}`,
+        "x-rapidapi-host": `${process.env.REACT_APP_X_RAPIDAPI_HOST}`,
       },
     }
   )
@@ -33,14 +34,14 @@ function searchByTitle(title, setMovieData) {
     });
 }
 
-//Get movie image and poster by imdb_id value
+//Get movie poster by imdb_id value
 function getImages(imdbId, setImages) {
   fetch(
     `https://movies-tvshows-data-imdb.p.rapidapi.com/?imdb=${imdbId}&type=get-movies-images-by-imdb`,
     {
       headers: {
-        "x-rapidapi-key": "dfcceae8f9msh391de961f277cd7p148597jsn0fe6d28eae90",
-        "x-rapidapi-host": "movies-tvshows-data-imdb.p.rapidapi.com",
+        "x-rapidapi-key": `${process.env.REACT_APP_X_RAPIDAPI_KEY}`,
+        "x-rapidapi-host": `${process.env.REACT_APP_X_RAPIDAPI_HOST}`,
       },
     }
   )
@@ -59,8 +60,8 @@ function getMovieDetails(imdbId, setMovieDetails) {
     `https://movies-tvshows-data-imdb.p.rapidapi.com/?imdb=${imdbId}&type=get-movie-details`,
     {
       headers: {
-        "x-rapidapi-key": "dfcceae8f9msh391de961f277cd7p148597jsn0fe6d28eae90",
-        "x-rapidapi-host": "movies-tvshows-data-imdb.p.rapidapi.com",
+        "x-rapidapi-key": `${process.env.REACT_APP_X_RAPIDAPI_KEY}`,
+        "x-rapidapi-host": `${process.env.REACT_APP_X_RAPIDAPI_HOST}`,
       },
     }
   )
@@ -74,8 +75,8 @@ function getMovieDetails(imdbId, setMovieDetails) {
 }
 
 //Post selected movie to database (collection)
-function addCollection(auth, movieDetails, images) {
-  fetch(`http://localhost:8080/collection/`, {
+function addCollection(auth, movieDetails, images, setError) {
+  fetch(`${process.env.REACT_APP_SERVER_URL}/collection/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -88,16 +89,20 @@ function addCollection(auth, movieDetails, images) {
       fanart: images.fanart,
       description: movieDetails.description,
       duration: movieDetails.runtime,
-      genres: movieDetails.genres.toString(),
+      genres: movieDetails.genres.join(", "),
+      seen: true,
     }),
   })
     .then((res) => res.json())
-    .catch((error) => console.log(error));
+    .then((res) => setError(res.msg))
+    .catch(() =>
+      setError("oops.. something went wrong! please try again later.")
+    );
 }
 
 //Post selected movie to database (watchlist)
-function addWatchlist(auth, movieDetails, images) {
-  fetch(`http://localhost:8080/watchlist/`, {
+function addWatchlist(auth, movieDetails, images, setError) {
+  fetch(`${process.env.REACT_APP_SERVER_URL}/watchlist/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -110,69 +115,43 @@ function addWatchlist(auth, movieDetails, images) {
       fanart: images.fanart,
       description: movieDetails.description,
       duration: movieDetails.runtime,
-      genres: movieDetails.genres.toString(),
+      genres: movieDetails.genres.join(", "),
+      seen: false,
     }),
   })
     .then((res) => res.json())
-    .catch((error) => console.log(error));
+    .then((res) => setError(res.msg))
+    .catch(() =>
+      setError("oops.. something went wrong! please try again later.")
+    );
 }
 
 function Search() {
-  const [title, setTitle] = useState(); //get input value
-  const [movieData, setMovieData] = useState(); //movie list by search value
-  const [imdbId, setImdbId] = useState(""); //set movie imdb_id
-  const [images, setImages] = useState(""); //get movie images
-  const [movieDetails, setMovieDetails] = useState(); //get movie details
-  const [trendingImages, setTrendinImages] = useState(""); //get trendig movie images
-  const [trendingDetails, setTrendinDetails] = useState(""); //get trendig movie details
+  const [title, setTitle] = useState(); // get input value
+  const [movieData, setMovieData] = useState(); // movie list by search value
+  const [imdbId, setImdbId] = useState(""); // set movie imdb_id
+  const [images, setImages] = useState(""); // get movie images
+  const [movieDetails, setMovieDetails] = useState(); // get movie details
+  const [trendingImages, setTrendinImages] = useState(""); // get trendig movie images
+  const [trendingDetails, setTrendinDetails] = useState(""); // get trendig movie details
+  const [error, setError] = useState(false); // set error
+
   const auth = useContext(AuthContext);
+  const trendingId = localStorage.getItem("trending_movie_id"); // get trenging movie id from local storage
 
   //Get movie details to "Now trending" section
   useEffect(() => {
-    getImages(localStorage.getItem("trending_movie_id"), setTrendinImages);
-    getMovieDetails(
-      localStorage.getItem("trending_movie_id"),
-      setTrendinDetails
-    );
-  }, []);
+    getImages(trendingId, setTrendinImages);
+    getMovieDetails(trendingId, setTrendinDetails);
+  }, [trendingId]);
 
   return (
-    <Hero image={heroImg} shadow>
+    <Hero image={heroImg} shadow size="cover">
       <Section>
         <StyledSection
           pageTitle="How many movies have You seen?"
           description="It has been estimated that there are approximately 500.000 movies worldwide. How many have left for you to watch? Let's explore!"
         ></StyledSection>
-      </Section>
-
-      {/* Get random movie */}
-      <Section shadow>
-        <S.SecondaryTitle>NOW TRENDING:</S.SecondaryTitle>
-        <S.MovieWrapper>
-          <Card
-            poster={trendingImages.poster}
-            title={trendingDetails.title}
-            rating={Number(trendingDetails.imdb_rating).toFixed(1)}
-          />
-          <S.PaddingLeftWrapper>
-            <MovieSection
-              description={trendingDetails.description}
-              runtime={trendingDetails.runtime}
-              year={trendingDetails.year}
-              genres={trendingDetails.genres}
-              rating={trendingDetails.imdb_rating}
-              votes={trendingDetails.vote_count}
-              toCollection={(e) => {
-                e.preventDefault();
-                addCollection(auth, movieDetails, images); //nepasiima imdb_id??
-              }}
-              toWatchlist={(e) => {
-                e.preventDefault();
-                addWatchlist(auth, movieDetails, images);
-              }}
-            />
-          </S.PaddingLeftWrapper>
-        </S.MovieWrapper>
       </Section>
 
       {/* Get search value an results */}
@@ -193,6 +172,7 @@ function Search() {
                   label="none"
                   handleChange={(e) => {
                     setTitle(e.target.value.split(".").join(" "));
+                    setError(false);
                   }}
                 />
                 <S.SearchButton type="submit" />
@@ -219,6 +199,7 @@ function Search() {
                     year={movie.year !== 0 && movie.year}
                     handleChange={(e) => {
                       setImdbId(e.target.value);
+                      setError(false);
                     }}
                   />
                 ))}
@@ -226,37 +207,69 @@ function Search() {
             </form>
           )}
         </S.SearchSectionBorder>
-      </Section>
 
-      {/* Get movie selected movie from select section by imdb_id */}
-      <Section>
+        {/* Get movie selected movie from select section by imdb_id */}
+
+        {error && (
+          <S.TopMarginWrapper>
+            <Notification>{error}</Notification>
+          </S.TopMarginWrapper>
+        )}
         {movieDetails && (
           <S.MovieWrapper>
-            <Card
-              poster={images.poster}
-              title={movieDetails.title}
-              rating={Number(movieDetails.imdb_rating).toFixed(1)}
-            />
+            <Poster poster={images.poster} />
+
             <S.PaddingLeftWrapper>
               <MovieSection
+                title={movieDetails.title}
                 description={movieDetails.description}
                 runtime={movieDetails.runtime}
                 year={movieDetails.year}
-                genres={movieDetails.genres}
+                genres={movieDetails.genres.join(", ")}
                 votes={movieDetails.vote_count}
                 rating={movieDetails.imdb_rating}
                 toCollection={(e) => {
                   e.preventDefault();
-                  addCollection(auth, movieDetails, images);
+                  addCollection(auth, movieDetails, images, setError);
+                  setError(true);
                 }}
                 toWatchlist={(e) => {
                   e.preventDefault();
-                  addWatchlist(auth, movieDetails, images);
+                  addWatchlist(auth, movieDetails, images, setError);
+                  setError(true);
                 }}
               />
             </S.PaddingLeftWrapper>
           </S.MovieWrapper>
         )}
+      </Section>
+
+      {/* Get random movie */}
+      <Section shadow>
+        <S.SecondaryTitle>NOW TRENDING:</S.SecondaryTitle>
+        <S.MovieWrapper>
+          <Poster poster={trendingImages.poster} />
+          <S.PaddingLeftWrapper>
+            <MovieSection
+              noButton
+              title={trendingDetails.title}
+              description={trendingDetails.description}
+              runtime={trendingDetails.runtime}
+              year={trendingDetails.year}
+              genres={trendingDetails.genres}
+              rating={trendingDetails.imdb_rating}
+              votes={trendingDetails.vote_count}
+              toCollection={(e) => {
+                e.preventDefault();
+                addCollection(auth, movieDetails, images);
+              }}
+              toWatchlist={(e) => {
+                e.preventDefault();
+                addWatchlist(auth, movieDetails, images);
+              }}
+            />
+          </S.PaddingLeftWrapper>
+        </S.MovieWrapper>
       </Section>
     </Hero>
   );
