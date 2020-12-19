@@ -4,16 +4,21 @@ export const MovieSection = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-height: 390px;
-  margin-right: 140px;
+  max-height: 700px;
+  padding-top: ${(props) => (props.noButton ? "0" : "20px")};
+  position: relative;
+
+  @media (max-width: 780px) {
+    max-height: 460px;
+  }
 `;
 
 export const DescriptionBlock = styled.div`
-  width: 420px;
-  max-height: 250px; //
+  max-width: 700px;
   position: relative;
   padding: 20px;
-  box-sizing: border-box;
+  background-color: rgb(0, 0, 0, 0.5);
+
   &::before,
   &::after {
     content: "";
@@ -23,10 +28,13 @@ export const DescriptionBlock = styled.div`
   &::before {
     top: 0;
     left: 0;
-    width: 30%;
+    width: 33%;
     height: 80%;
     border-top: 1px solid ${(props) => props.theme.color.white};
     border-left: 1px solid ${(props) => props.theme.color.white};
+    @media (max-width: 780px) {
+      height: 99%;
+    }
   }
   &::after {
     right: 0;
@@ -35,103 +43,40 @@ export const DescriptionBlock = styled.div`
     height: 50%;
     border-right: 1px solid ${(props) => props.theme.color.white};
     border-bottom: 1px solid ${(props) => props.theme.color.white};
+    @media (max-width: 780px) {
+      width: 100%;
+    }
   }
 `;
 
-export const DescriptionWrapper = styled.div`
-  max-height: 90%;
+export const DescriptionWrapper = styled.div``;
+
+export const MovieTitle = styled.h2`
+  margin-top: ${(props) => (props.noButton ? "0" : "20px")};
+  margin-bottom: 5px;
+  color: rgb(251, 251, 251, 0.9);
 `;
 
-export const DescriptionHeader = styled.h2`
-  margin-top: 0;
+export const DescriptionHeader = styled.h5`
+  margin-top: 10px;
   color: rgb(251, 251, 251, 0.9);
 `;
 
 export const Description = styled.p`
-  max-height: 160px;
   margin: 0;
   padding-bottom: 1px;
   overflow: scroll;
   color: rgb(251, 251, 251, 0.5);
   overflow: auto;
-  &&::-webkit-scrollbar-track {
-    background-color: ${(props) => props.theme.color.black};
-  }
-
-  &&::-webkit-scrollbar {
-    /* width: 1px; */
-    display: none;
-  }
-
-  &&::-webkit-scrollbar-thumb {
-    border: 1px solid rgb(251, 251, 251, 0.1);
-  }
+  box-sizing: border-box;
 `;
 
-export const DetailsBlock = styled.div`
-  width: 180px;
-  position: relative;
-  padding: 20px;
-  transform: translate(310px, -15px);
-  box-sizing: border-box;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    color: ${(props) => props.theme.color.white};
-  }
-  &::before {
-    top: 0;
-    left: 0;
-    width: 70%;
-    height: 85%;
-    border-top: 1px solid ${(props) => props.theme.color.white};
-    border-left: 1px solid ${(props) => props.theme.color.white};
-  }
-  &::after {
-    right: 0;
-    bottom: 0;
-    width: 25%;
-    height: 50%;
-    border-right: 1px solid ${(props) => props.theme.color.white};
-    border-bottom: 1px solid ${(props) => props.theme.color.white};
-  }
-`;
-
-export const DetailsBlock2 = styled.div`
-  width: 180px;
-  position: relative;
-  padding: 20px;
-  transform: translate(140px, -85px);
-  box-sizing: border-box;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    color: ${(props) => props.theme.color.white};
-  }
-  &::before {
-    bottom: 0;
-    left: 0;
-    width: 30%;
-    height: 75%;
-    border-left: 1px solid ${(props) => props.theme.color.white};
-    border-bottom: 1px solid ${(props) => props.theme.color.white};
-  }
-  &::after {
-    top: 0;
-    right: 0;
-    width: 35%;
-    height: 65%;
-    border-top: 1px solid ${(props) => props.theme.color.white};
-    border-right: 1px solid ${(props) => props.theme.color.white};
-  }
+export const DetailsWrapper = styled.div`
+  padding-top: 20px;
+  text-align: left;
 `;
 
 export const DetailsHeader = styled.h5`
-  text-align: center;
   margin: 5px 0;
   &:first-child {
     margin-top: 0;
@@ -147,11 +92,13 @@ export const CustomText = styled.span`
 `;
 
 export const ButtonBlock = styled.div`
+  display: ${(props) => (props.noButton ? "none" : "flex")};
   width: 100%;
   max-height: 10%;
-  display: flex;
   justify-content: flex-end;
-  transform: translate(70px, -65px);
+  position: absolute;
+  top: 0px;
+  right: 0;
 `;
 
 export const ButtonSubmit = styled.form`
