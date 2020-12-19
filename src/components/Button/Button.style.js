@@ -6,7 +6,6 @@ export const Button = styled.button`
     (props.color === "primary" && props.theme.color.white) ||
     (props.color === "secondary" && props.theme.color.grey)};
   color: ${(props) => props.color === "secondary" && props.theme.color.white};
-  opacity: ${(props) => props.color === "secondary" && "0.5"};
   border: none;
   outline: none;
   padding: 10px 20px;
@@ -17,6 +16,6 @@ export const Button = styled.button`
   text-transform: capitalize;
 
   &:hover {
-    opacity: ${(props) => props.color === "secondary" && "1"};
+    transform: scale(1.05);
   }
 `;
