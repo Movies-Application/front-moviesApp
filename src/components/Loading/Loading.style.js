@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,10 +11,10 @@ export const Loader = styled.div`
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
-  border-top: 1.1em solid #eeeeee;
-  border-right: 1.1em solid #eeeeee;
-  border-bottom: 1.1em solid #eeeeee;
-  border-left: 1.1em solid #888888;
+  border-top: 0.5em solid #eeeeee;
+  border-right: 0.5em solid #eeeeee;
+  border-bottom: 0.5em solid #eeeeee;
+  border-left: 0.5em solid #888888;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
