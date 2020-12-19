@@ -13,7 +13,6 @@ import heroImg from "../../assets/blury-lights2.jpeg";
 import * as S from "./Watchlist.style";
 
 function deleteMovie(id, auth, setMovieData, movieData, setError) {
-  console.log(id);
   fetch(`${process.env.REACT_APP_SERVER_URL}/delete/${id}`, {
     method: "DELETE",
     headers: {
