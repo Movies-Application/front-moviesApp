@@ -5,7 +5,7 @@ import * as S from "./AboutCollection.style";
 import heroImg from "../../assets/blury-lights2.jpeg";
 
 function getMovie(movieId, auth, setMovie) {
-  fetch(`${process.env.REACT_APP_SERVER_URL}/${movieId}`, {
+  fetch(`${process.env.REACT_APP_SERVER_URL}/collection/${movieId}`, {
     headers: {
       Authorization: `Bearer ${auth.token}`,
     },
