@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import logOutIcon from "../../assets/logout.svg";
 
 export const Header = styled.header`
   display: flex;
@@ -14,26 +15,35 @@ export const Logo = styled.img`
 `;
 
 export const Actions = styled.nav`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 20px;
 `;
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  transition: 0.8s ease-in-out;
+  transition: 0.2s;
   color: ${(props) => props.theme.color.white};
-
-  &:not(:last-child) {
-    margin-right: 30px;
+  margin: 0 10px 10px;
+  &:hover {
+    transform: scale(1.07);
   }
 `;
 
 export const Logout = styled.button`
-  padding: 0;
-  background: none;
+  margin-left: 10px;
+  width: 50px;
   border: none;
+  background: url(${logOutIcon});
+  background-size: 30%;
+  background-repeat: no-repeat;
   text-decoration: none;
-  transition: 0.8s ease-in-out;
+  transition: 0.2s;
   color: ${(props) => props.theme.color.white};
   cursor: pointer;
   outline: none;
+  &:hover {
+    transform: scale(1.07);
+  }
 `;

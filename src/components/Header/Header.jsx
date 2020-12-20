@@ -17,11 +17,10 @@ function Header({ loggedIn, logOut }) {
       )}
       {loggedIn && (
         <S.Actions>
-          <S.StyledLink to="/">Home</S.StyledLink>
           <S.StyledLink to="/collection">Collection</S.StyledLink>
           <S.StyledLink to="/watchlist">Watchlist</S.StyledLink>
           <S.StyledLink to="/search">Search</S.StyledLink>
-          <S.Logout onClick={logOut}>Log Out</S.Logout>
+          <S.Logout onClick={logOut} />
         </S.Actions>
       )}
     </S.Header>
