@@ -1,12 +1,13 @@
 export { default as Button } from "./Button/Button";
-export { default as Card } from "./Card/Card";
 export { default as Circle } from "./Circle/Circle";
+export { default as DeleteBox } from "./DeleteBox/DeleteBox";
 export { default as FormTemplate } from "./FormTemplate/FormTemplate";
 export { default as Header } from "./Header/Header";
 export { default as Hero } from "./Hero/Hero";
 export { default as InputField } from "./InputField/InputField";
 export { default as Loading } from "./Loading/Loading";
 export { default as Notification } from "./Notification/Notification";
+export { default as Poster } from "./Poster/Poster";
 export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
 export { default as MovieSection } from "./MovieSection/MovieSection";
 export { default as Section } from "./Section/Section";
