@@ -19,7 +19,7 @@ export const Circle = styled.div`
   }
   @keyframes blink {
     50% {
-      opacity: 0.5;
+      opacity: 0.8;
     }
     100% {
       opacity: 1;
