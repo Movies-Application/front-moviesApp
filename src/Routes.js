@@ -28,6 +28,8 @@ function Routes() {
           auth.updateToken("");
           localStorage.removeItem("token");
           localStorage.removeItem("trending_movie_id");
+          localStorage.removeItem("selectedMovieImdb");
+          localStorage.removeItem("selectedMovie");
         }}
       />
       <Suspense fallback={<Loading />}>
