@@ -14,5 +14,13 @@ export const FlexWrapper = styled.div`
 `;
 
 export const MarginWrapper = styled.div`
-  margin: 0 10px 0;
+  &&:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  @media (max-width: 360px) {
+    &&:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
 `;
