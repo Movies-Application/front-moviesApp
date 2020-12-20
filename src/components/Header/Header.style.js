@@ -6,7 +6,6 @@ export const Header = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
 `;
 
 export const Logo = styled.img`
@@ -22,6 +21,7 @@ export const Actions = styled.nav`
 `;
 
 export const StyledLink = styled(Link)`
+  /* font-size: 0.9em; */
   text-decoration: none;
   transition: 0.2s;
   color: ${(props) => props.theme.color.white};
@@ -33,10 +33,10 @@ export const StyledLink = styled(Link)`
 
 export const Logout = styled.button`
   margin-left: 10px;
-  width: 50px;
+  width: 20px;
   border: none;
   background: url(${logOutIcon});
-  background-size: 30%;
+  background-size: 90%;
   background-repeat: no-repeat;
   text-decoration: none;
   transition: 0.2s;
