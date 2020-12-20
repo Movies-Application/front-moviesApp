@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import * as S from "./InputField.style";
 
 function InputField({
@@ -31,15 +30,5 @@ function InputField({
     </>
   );
 }
-
-InputField.propTypes = {
-  handleChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  labelText: PropTypes.string,
-  type: PropTypes.string,
-  name: PropTypes.string,
-  label: PropTypes.string,
-  custom: PropTypes.string,
-};
 
 export default InputField;

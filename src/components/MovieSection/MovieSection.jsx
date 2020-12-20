@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import * as S from "./MovieSection.style";
 import { Button } from "../";
 
@@ -11,6 +10,7 @@ function MovieSection({
   rating,
   votes,
   title,
+  type,
   toWatchlist,
   toCollection,
   noButton,
@@ -27,7 +27,7 @@ function MovieSection({
           </S.DescriptionWrapper>
           <S.DetailsWrapper>
             <S.DetailsHeader>
-              IMDB RATING:{" "}
+              IMDB RATING:
               <S.CustomText>
                 {rating} / 10 (votes: {votes})
               </S.CustomText>
@@ -46,12 +46,12 @@ function MovieSection({
       </div>
       <S.ButtonBlock noButton={noButton}>
         <S.ButtonSubmit onSubmit={toWatchlist} noWatchlist={noWatchlist}>
-          <Button type="submit" color="primary">
+          <Button type={type} color="primary">
             TO WATCHLIST
           </Button>
         </S.ButtonSubmit>
         <S.ButtonSubmit onSubmit={toCollection}>
-          <Button type="submit" color="secondary">
+          <Button type={type} color="secondary">
             TO COLLECTION
           </Button>
         </S.ButtonSubmit>
@@ -59,19 +59,5 @@ function MovieSection({
     </S.MovieSection>
   );
 }
-
-Button.propTypes = {
-  description: PropTypes.string,
-  runtime: PropTypes.number,
-  year: PropTypes.number,
-  genres: PropTypes.string,
-  rating: PropTypes.number,
-  votes: PropTypes.number,
-  title: PropTypes.string,
-  toWatchlist: PropTypes.func,
-  toCollection: PropTypes.func,
-  noButton: PropTypes.bool,
-  noWatchlist: PropTypes.bool,
-};
 
 export default MovieSection;

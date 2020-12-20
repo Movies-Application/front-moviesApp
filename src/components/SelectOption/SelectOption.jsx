@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import * as S from "./SelectOption.style";
 
 function SelectOption({ handleChange, title, movie_id, year, onClick, type }) {
@@ -31,14 +30,5 @@ function SelectOption({ handleChange, title, movie_id, year, onClick, type }) {
     </S.SelectOption>
   );
 }
-
-SelectOption.propTypes = {
-  handleChange: PropTypes.func,
-  title: PropTypes.string,
-  movie_id: PropTypes.string,
-  year: PropTypes.number,
-  onClick: PropTypes.func,
-  type: PropTypes.string,
-};
 
 export default SelectOption;

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import * as S from "./Poster.style";
 import { DeleteBox } from "../";
 
@@ -26,14 +25,11 @@ function Poster({ poster, approve, type, active, redirect, title }) {
         poster={poster}
       >
         <S.IconWrapper displayLink={display} active={active}>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <S.StyledLink onClick={redirect} />
+          <form>
+            <S.StyledLink onClick={redirect} type={type} />
             <S.DeleteButton
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setVisibility("true");
               }}
               type={type}
@@ -44,14 +40,5 @@ function Poster({ poster, approve, type, active, redirect, title }) {
     </>
   );
 }
-
-Poster.propTypes = {
-  poster: PropTypes.string,
-  approve: PropTypes.func,
-  type: PropTypes.string,
-  active: PropTypes.bool,
-  redirect: PropTypes.func,
-  title: PropTypes.string,
-};
 
 export default Poster;

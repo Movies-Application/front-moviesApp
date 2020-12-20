@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Button, InputField } from "../";
 import * as S from "./FormTemplate.style";
 
@@ -8,7 +7,7 @@ function FormTemplate({ fields, callback, mainBtn, type }) {
     username: "",
     password: "",
   });
-  const [select, setSelect] = useState(false);
+  // const [select, setSelect] = useState(false);
 
   return (
     <S.FormTemplate
@@ -57,12 +56,5 @@ function FormTemplate({ fields, callback, mainBtn, type }) {
     </S.FormTemplate>
   );
 }
-
-FormTemplate.propTypes = {
-  fields: PropTypes.string,
-  callback: PropTypes.func,
-  mainBtn: PropTypes.string,
-  type: PropTypes.string,
-};
 
 export default FormTemplate;

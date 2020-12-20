@@ -25,8 +25,7 @@ function getMovie(movieId, auth, setMovie) {
     .catch((err) => console.log(err));
 }
 
-function setToSeen(movieId, auth, setError) {
-  console.log(movieId);
+function setToSeen(movieId, auth, setError, history, movie) {
   fetch(`${process.env.REACT_APP_SERVER_URL}/watchlist/${movieId}`, {
     method: "POST",
     headers: {
@@ -35,7 +34,10 @@ function setToSeen(movieId, auth, setError) {
     body: JSON.stringify({ seen: true }),
   })
     .then((res) => res.json())
-    .then((res) => setError(res.msg))
+    .then((res) => {
+      setError(res.msg);
+      history.push(`/collection/about/${movie.title}`);
+    })
     .catch(() =>
       setError("oops.. something went wrong! please try again later.")
     );
@@ -86,6 +88,7 @@ function AboutWatchlist() {
               <S.MarginLeft>
                 <MovieSection
                   noWatchlist
+                  type="submit"
                   title={movie.title}
                   description={movie.description}
                   runtime={movie.duration}
@@ -95,8 +98,7 @@ function AboutWatchlist() {
                   rating={movieDetails.imdb_rating}
                   toCollection={(e) => {
                     e.preventDefault();
-                    setToSeen(Number(movieId), auth, setError);
-                    history.push(`/collection/about/${movie.title}`);
+                    setToSeen(Number(movieId), auth, setError, history, movie);
                   }}
                 />
               </S.MarginLeft>

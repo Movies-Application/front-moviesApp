@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 export const Hero = styled.div`
   min-height: ${(props) => (props.size === "cover" ? "100%" : "100vh")};
+  min-height: 100vh;
   margin-top: -182px;
   padding-top: 182px;
-  padding-bottom: 182px;
+  padding-top: 182px;
+  min-height: calc(100vh - 80px);
   background: ${(props) => props.image && `url(${props.image})`};
   background-repeat: no-repeat;
   background-size: cover;

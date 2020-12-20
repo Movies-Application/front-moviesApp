@@ -5,7 +5,6 @@ import heroImg from "../../assets/hero-movie.jpeg";
 import * as S from "./Register.style";
 
 function addUser(data, setError) {
-  console.log(data);
   fetch("http://localhost:8080/register", {
     method: "POST",
     headers: {

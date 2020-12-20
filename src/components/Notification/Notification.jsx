@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import * as S from "./Notification.style";
 
 function Notification({ children }) {
@@ -12,9 +11,5 @@ function Notification({ children }) {
     </S.Notification>
   );
 }
-
-Notification.propTypes = {
-  children: PropTypes.string,
-};
 
 export default Notification;

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import * as S from "./Hero.style";
 
 function Hero({ children, image, shadow, size }) {
@@ -9,12 +8,5 @@ function Hero({ children, image, shadow, size }) {
     </S.Hero>
   );
 }
-
-Hero.propTypes = {
-  children: PropTypes.string,
-  image: PropTypes.string,
-  shadow: PropTypes.bool,
-  size: PropTypes.string,
-};
 
 export default Hero;

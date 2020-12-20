@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import * as S from "./StyledSection.style";
 
 function StyledSection({ children, description, pageTitle }) {
@@ -11,11 +10,5 @@ function StyledSection({ children, description, pageTitle }) {
     </S.StyledSection>
   );
 }
-
-StyledSection.propTypes = {
-  children: PropTypes.string,
-  description: PropTypes.string,
-  pageTitle: PropTypes.string,
-};
 
 export default StyledSection;

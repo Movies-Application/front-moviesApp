@@ -146,7 +146,7 @@ function Search() {
   }, [trendingId]);
 
   return (
-    <Hero image={heroImg} shadow size="cover">
+    <Hero image={heroImg} shadow>
       <Section>
         <StyledSection
           pageTitle="How many movies have You seen?"
@@ -221,11 +221,12 @@ function Search() {
 
             <S.PaddingLeftWrapper>
               <MovieSection
+                type="submit"
                 title={movieDetails.title}
                 description={movieDetails.description}
                 runtime={movieDetails.runtime}
                 year={movieDetails.year}
-                genres={movieDetails.genres.join(", ")}
+                genres={movieDetails.genres}
                 votes={movieDetails.vote_count}
                 rating={movieDetails.imdb_rating}
                 toCollection={(e) => {

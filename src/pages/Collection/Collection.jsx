@@ -92,7 +92,8 @@ function Collection() {
                   title={movie.title}
                   poster={movie.poster}
                   type="submit"
-                  approve={() => {
+                  approve={(e) => {
+                    e.preventDefault();
                     deleteMovie(
                       movie.id,
                       auth,
@@ -101,7 +102,8 @@ function Collection() {
                       setError
                     );
                   }}
-                  redirect={() => {
+                  redirect={(e) => {
+                    e.preventDefault();
                     localStorage.setItem("selectedMovie", movie.id);
                     localStorage.setItem("selectedMovieImdb", movie.imdb_id);
                     history.push(`/collection/about/${movie.title}`);
