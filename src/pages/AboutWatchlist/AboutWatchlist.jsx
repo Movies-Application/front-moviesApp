@@ -85,6 +85,7 @@ function AboutWatchlist() {
               <Poster poster={movie.poster} />
               <S.MarginLeft>
                 <MovieSection
+                  noWatchlist
                   title={movie.title}
                   description={movie.description}
                   runtime={movie.duration}
