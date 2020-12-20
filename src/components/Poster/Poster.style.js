@@ -1,21 +1,19 @@
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
 import infoIcon from "../../assets/info.svg";
 import deleteIcon from "../../assets/delete.svg";
 
 export const Poster = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 220px; //buvo min 220
+  min-width: 220px;
   height: 350px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid rgb(0, 0, 0, 0.3);
   background: ${(props) => props.theme.color.black};
   background-image: url(${(props) => props.poster});
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
   transition: 0.3s;
-  /* box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.5); */
   position: relative;
   box-shadow: ${(props) =>
     props.displayShadow === true && props.active === true
