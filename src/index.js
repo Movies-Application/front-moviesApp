@@ -8,9 +8,8 @@ import theme from "./theme";
 require("dotenv").config();
 
 const GlobalStyle = createGlobalStyle`
-  * {
+  body {
   font-family: "Thasadith", sans-serif;
-  box-sizing: border-box;
 }
 `;
 
@@ -18,8 +17,8 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <AuthProvider>
-        <Routes />
         <GlobalStyle />
+        <Routes />
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
