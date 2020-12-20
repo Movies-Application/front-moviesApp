@@ -64,8 +64,16 @@ function Collection() {
       <Section>
         {movieData ? (
           <StyledSection
-            pageTitle="my collection"
-            description={`You have ${movieData.length} movies in Your collection. It took ${time} hours to review them!`}
+            pageTitle={
+              movieData.length !== 0
+                ? `My Collection`
+                : `My Collection is empty`
+            }
+            description={
+              movieData.length !== 0
+                ? `You have ${movieData.length} movies in Your collection. It took ${time} hours to review them!`
+                : 'You have no movies in Your collection. Add some by visiting "Search" page'
+            }
           />
         ) : (
           <Loading />
@@ -93,7 +101,7 @@ function Collection() {
                       setError
                     );
                   }}
-                  nono={() => {
+                  redirect={() => {
                     localStorage.setItem("selectedMovie", movie.id);
                     localStorage.setItem("selectedMovieImdb", movie.imdb_id);
                     history.push(`/collection/about/${movie.title}`);

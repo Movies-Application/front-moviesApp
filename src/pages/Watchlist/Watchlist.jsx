@@ -57,6 +57,10 @@ function Watchlist() {
             pageTitle={
               movieData.length !== 0 ? `My Watchlist` : `My Watchlist is empty`
             }
+            description={
+              movieData.length === 0 &&
+              'You have no movies in Your watchlist. Add some by visiting "Search" page'
+            }
           />
         ) : (
           <Loading />
@@ -84,7 +88,7 @@ function Watchlist() {
                       setError
                     );
                   }}
-                  nono={() => {
+                  redirect={() => {
                     localStorage.setItem("selectedMovie", movie.id);
                     localStorage.setItem("selectedMovieImdb", movie.imdb_id);
                     history.push(`/watchlist/about/${movie.title}`);
