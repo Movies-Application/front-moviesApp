@@ -1,6 +1,7 @@
 export { default as Button } from "./Button/Button";
 export { default as Circle } from "./Circle/Circle";
 export { default as DeleteBox } from "./DeleteBox/DeleteBox";
+export { default as Footer } from "./Footer/Footer";
 export { default as FormTemplate } from "./FormTemplate/FormTemplate";
 export { default as Header } from "./Header/Header";
 export { default as Hero } from "./Hero/Hero";
