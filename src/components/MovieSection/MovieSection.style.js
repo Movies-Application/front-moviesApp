@@ -94,7 +94,7 @@ export const CustomText = styled.span`
 export const ButtonBlock = styled.div`
   display: ${(props) => (props.noButton ? "none" : "flex")};
   width: 100%;
-  max-height: 10%;
+  max-height: 13%;
   justify-content: flex-end;
   position: absolute;
   top: 0px;
@@ -102,6 +102,7 @@ export const ButtonBlock = styled.div`
 `;
 
 export const ButtonSubmit = styled.form`
+  display: ${(props) => (props.noWatchlist ? "none" : "flex")};
   &:not(:last-child) {
     margin-right: 20px;
   }

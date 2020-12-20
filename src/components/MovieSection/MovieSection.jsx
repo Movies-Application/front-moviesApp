@@ -13,6 +13,7 @@ function MovieSection({
   toWatchlist,
   toCollection,
   noButton,
+  noWatchlist,
 }) {
   return (
     <S.MovieSection noButton={noButton}>
@@ -43,7 +44,7 @@ function MovieSection({
         </S.DescriptionBlock>
       </div>
       <S.ButtonBlock noButton={noButton}>
-        <S.ButtonSubmit onSubmit={toWatchlist}>
+        <S.ButtonSubmit onSubmit={toWatchlist} noWatchlist={noWatchlist}>
           <Button type="submit" color="primary">
             TO WATCHLIST
           </Button>
