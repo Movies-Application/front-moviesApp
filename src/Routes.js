@@ -2,7 +2,7 @@ import React, { useContext, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
 
-import { Header, Loading, PrivateRoute } from "./components";
+import { Header, Loading, PrivateRoute, Footer } from "./components";
 
 const HomeLazy = lazy(() => import("./pages/Home/Home"));
 const SearchLazy = lazy(() => import("./pages/Search/Search"));
@@ -51,6 +51,7 @@ function Routes() {
           <Route exact path="/register" component={RegisterLazy} />
         </Switch>
       </Suspense>
+      <Footer />
     </Router>
   );
 }
