@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import * as S from "./Poster.style";
 import { DeleteBox } from "../";
 
@@ -43,5 +44,14 @@ function Poster({ poster, approve, type, active, redirect, title }) {
     </>
   );
 }
+
+Poster.propTypes = {
+  poster: PropTypes.string,
+  approve: PropTypes.func,
+  type: PropTypes.string,
+  active: PropTypes.bool,
+  redirect: PropTypes.func,
+  title: PropTypes.string,
+};
 
 export default Poster;

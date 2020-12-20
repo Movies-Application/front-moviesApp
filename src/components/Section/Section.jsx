@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import * as S from "./Section.style";
 
 function Section({ children, fullWidth, background }) {
@@ -9,5 +10,11 @@ function Section({ children, fullWidth, background }) {
     </S.Section>
   );
 }
+
+Section.propTypes = {
+  children: PropTypes.string,
+  fullWidth: PropTypes.bool,
+  background: PropTypes.string,
+};
 
 export default Section;

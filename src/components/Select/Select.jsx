@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import * as S from "./Select.style";
 
 function Select({ children }) {
@@ -15,5 +16,9 @@ function Select({ children }) {
     </S.DropDownContainer>
   );
 }
+
+Select.propTypes = {
+  children: PropTypes.string,
+};
 
 export default Select;

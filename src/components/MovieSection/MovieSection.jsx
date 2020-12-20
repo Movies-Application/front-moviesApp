@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import * as S from "./MovieSection.style";
 import { Button } from "../";
 
@@ -58,5 +59,19 @@ function MovieSection({
     </S.MovieSection>
   );
 }
+
+Button.propTypes = {
+  description: PropTypes.string,
+  runtime: PropTypes.number,
+  year: PropTypes.number,
+  genres: PropTypes.string,
+  rating: PropTypes.number,
+  votes: PropTypes.number,
+  title: PropTypes.string,
+  toWatchlist: PropTypes.func,
+  toCollection: PropTypes.func,
+  noButton: PropTypes.bool,
+  noWatchlist: PropTypes.bool,
+};
 
 export default MovieSection;

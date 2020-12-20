@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Button, InputField } from "../";
 import * as S from "./FormTemplate.style";
 
-function FormTemplate({ fields, callback, mainBtn, secBtn, type }) {
+function FormTemplate({ fields, callback, mainBtn, type }) {
   const [fieldValues, setFieldValues] = useState({
     username: "",
     password: "",
@@ -33,7 +34,8 @@ function FormTemplate({ fields, callback, mainBtn, secBtn, type }) {
             />
           </S.InputWrapper>
         ))}
-      <div>
+      {/* to Do */}
+      {/* <div>
         <S.CheckboxLabel htmlFor="showPass">
           <S.Checkmark displayTick={select}></S.Checkmark>
           <S.Checkbox
@@ -45,7 +47,7 @@ function FormTemplate({ fields, callback, mainBtn, secBtn, type }) {
           />
           Show password
         </S.CheckboxLabel>
-      </div>
+      </div> */}
 
       <S.RightWrapper>
         <Button type={type} color="primary">
@@ -55,4 +57,12 @@ function FormTemplate({ fields, callback, mainBtn, secBtn, type }) {
     </S.FormTemplate>
   );
 }
+
+FormTemplate.propTypes = {
+  fields: PropTypes.string,
+  callback: PropTypes.func,
+  mainBtn: PropTypes.string,
+  type: PropTypes.string,
+};
+
 export default FormTemplate;

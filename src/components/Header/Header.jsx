@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import * as S from "./Header.style";
 import { Link } from "react-router-dom";
 import logoImg from "../../assets/video-camera.svg";
@@ -26,5 +27,10 @@ function Header({ loggedIn, logOut }) {
     </S.Header>
   );
 }
+
+Header.propTypes = {
+  loggedIn: PropTypes.string,
+  logOut: PropTypes.func,
+};
 
 export default Header;

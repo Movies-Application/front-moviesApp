@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import * as S from "./DeleteBox.style";
 import { Button } from "../";
 
@@ -23,5 +24,12 @@ function DeleteBox({ title, approve, decline, visibility }) {
     </S.DeleteBox>
   );
 }
+
+DeleteBox.propTypes = {
+  title: PropTypes.string,
+  approve: PropTypes.func,
+  decline: PropTypes.func,
+  visibility: PropTypes.string,
+};
 
 export default DeleteBox;
