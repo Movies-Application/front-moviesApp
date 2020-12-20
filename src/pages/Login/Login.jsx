@@ -4,6 +4,7 @@ import { userData } from "../../utils/data";
 import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import heroImg from "../../assets/hero-movie.jpeg";
+import * as S from "./Login.style";
 
 function login(data, setError, auth, history) {
   fetch("http://localhost:8080/login", {
@@ -37,6 +38,7 @@ function Login() {
       <Hero image={heroImg} shadow>
         <Section>
           {error && <Notification>{error}</Notification>}
+          <S.SecondaryTitle>LOGIN:</S.SecondaryTitle>
           <FormTemplate
             fields={userData}
             type="submit"

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Hero, FormTemplate, Notification, Section } from "../../components";
 import { userData } from "../../utils/data";
 import heroImg from "../../assets/hero-movie.jpeg";
+import * as S from "./Register.style";
 
 function addUser(data, setError) {
   console.log(data);
@@ -27,6 +28,7 @@ function Register() {
       <Hero image={heroImg} shadow>
         <Section>
           {error && <Notification>{error}</Notification>}
+          <S.SecondaryTitle>REGISTER:</S.SecondaryTitle>
           <FormTemplate
             fields={userData}
             type="submit"
